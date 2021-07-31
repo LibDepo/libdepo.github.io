@@ -1,0 +1,306 @@
+30.07.2021
+* Обновлён аддон Memory Test Floppy Disk
+26.07.2021
+* Обновлена сборка SergeiStrelec
+* Обновлён аддон Memory Test Floppy Disk
+27.05.2021
+* Обновлён аддон Bootmedia
+13.05.2021
+* Обновлён аддон PMagic
+27.03.2021
+* Обновлена сборка 2k10 by conty9/korsak7
+11.03,2021
+* Обновлён аддон O&O BlueCon Tech
+* Обновлён список Linux distro (upd. SysResc)
+* Обновлена сборка 2k10 by conty9/korsak7
+07.03.2021
+* Обновление сборки от Ratiborus (x64 only)
+06.03.2021
+* Обновлена сборка System software for Windows by CUTA
+* Обновлён список Linux distro (+UBCD)
+04.03.2021
+* Обновлён аддон PMagic
+23.02.2021
+* Обновлена сборка 2k10 by conty9/korsak7
+21.02.2021
+* Обновлён список Linux distro (upd. Ubuntu, Tails)
+13.02.2021
+* Обновлён аддон Memory Test Floppy Disk
+11.02.2021
+* Обновление утилит от Ratiborus
+23.01.2012
+* Обновлён аддон Комплекты установки Windows ± Office от SmokieBlahBlah (Win10)
+21.01.2021
+* Обновлена сборка 2k10 by conty9/korsak7
+* Обновлена сборка System software for Windows by CUTA
+20.01.2021
+* Обновлён аддон Комплекты установки Windows ± Office от SmokieBlahBlah (Win10)
+18.01.2021
++ Добавлен аддон Avira Rescue System
+14.01.2021
+* Обновлена сборка System software for Windows by CUTA
+* Обновлён аддон Комплекты установки Windows ± Office от SmokieBlahBlah
+09.01.2021
+* Обновлён список Linux distro (upd. LinuxMint)
+06.01.2021
+* Обновлена сборка 2k10 by conty9/korsak7
+05.01.2021
+* Обновлена сборка SergeiStrelec
+31.12.2020
+* Обновлена сборка BELOFF Minimal
+28.12.2020
+* Обновлена сборка Andreyonohov & Leha342 Lite
+* Обновлён аддон PMagic
+* Обновление утилит от Ratiborus
+16.12.2020
+* Обновлена сборка System software for Windows by CUTA
+* Обновлён список Windows distro (original 20H2 build 631)
+01.12.2020
+* Обновлена сборка DrJayZi
+25.11.2020
+* Обновлена сборка SergeiStrelec
+13.11.2020
+* Обновлена сборка BELOFF Minimal
+* Обновлён аддон Bootmedia
+08.11.2020
+* Обновлён аддон O&O BlueCon Tech
+* Обновлён список Windows distro (sergeysvirid)
+06.11.2020
+* Обновлена сборка Andreyonohov & Leha342 Lite
+- Удалён Kerish Doctor
+24.10.2020
+* Обновлён список Linux distro (upd. SysResCD)
+22.10.2020
+* Обновлён список Windows distro (+оригинальные 20H2)
+14.10.2020
+* Обновлён аддон PMagic
+11.10.2020
+* Обновлена сборка 2k10 by conty9/korsak7
+09.10.2020
+* Обновлена сборка Andreyonohov & Leha342 Lite
+* Замена BELOFF Lite -> BELOFF Minimal
+03.10.2020
+* Обновлена сборка 2k10 by conty9/korsak7
+02.10.2020
+* Обновлён список Linux distro (выброшен LinuxFX - стал коммерческим)
+23.09.2020
+* Обновлена сборка Andreyonohov & Leha342 Lite
+22.09.2020
+* Обновление addlets (TheBat, StartIsBack, KerishDoctor)
+19.09.2020
+* Обновлён аддон Acronis (обновление UEFI-загрузчика и коррекция видеорежима)
+15.09.2020
+* Обновлена сборка SergeiStrelec
+13.09.2020
+* Обновлена сборка System software for Windows by CUTA
+* Обновлён Adobe Photoshop
+* Обновлена сборка AdminPE
+11.09.2020
+* Обновлён список Windows distro
+25.08.2020
+* Обновлён список Windows distro (сборки sergeysvirid)
+24.08.2020
+* Обновлён аддон PMagic
+08.08.2020
+* Исправлена загрузка Far Manager и FarManagerPE
+05.082020
+* Обновлена сборка Andreyonohov & Leha342 Lite
+03.08.2020
+* Обновлён аддон O&O BlueCon Tech
+* Обновление утилит от Ratiborus
+29.07.2020
+* Обновлён аддон Reset Windows Password
+23.07.2020
+* Обновление сборки от Ratiborus
+04.07.2020
+* Обновлена сборка System software for Windows by CUTA
++ Добавлен Kerish Doctor
+01.07.2020
+* Обновлена сборка 2k10 by conty9/korsak7
+28.06.2020
+* Обновлена сборка 2k10 by conty9/korsak7
+20.06.2020
+* Обновлён Adobe Photoshop
+14.06.2020
+* Обновлён список Windows distro
+11.06.2020
+* Обновлена сборка System software for Windows by CUTA
+08.06.2020
+* Обновлён аддон Комплекты установки Windows ± Office от SmokieBlahBlah
+04.06.2020
+* Обновлена сборка System software for Windows by CUTA
+* Обновлена сборка Andreyonohov & Leha342 Lite
+31.05.2020
+* Обновлена сборка SergeiStrelec
+* Подчищен список аддонов
+30.05.2020
+* Обновлён Runtime Software Pack
+* Обновлён аддон Acronis (newest) (исправлена загрузка в UEFI новой версии 25700)
+22.05.2020
+* Обновлена сборка System software for Windows by CUTA
+* Обновлён Adobe Photoshop
+21.05.2020
+* Обновлён список Windows distro
+* Обновлён аддон PMagic
+* Обновление утилит от Ratiborus
+* Обновлён список Linux distro
+12.05.2020
+* Обновлён список Windows distro (сборки adguard "Multi" в полезных ссылках)
+10.05.2020
+* Обновлён список Linux distro
+* Обновлена сборка System software for Windows by CUTA
+26.04.2020
+* Обновлён аддон Комплекты установки Windows ± Office от SmokieBlahBlah
+* Обновлена сборка 2k10 by conty9/korsak7
+24.04.2020
+* Обновлён список Linux distro
+22.04.2020
+* Обновлён аддон O&O BlueCon Tech
+21.04.2020
+* Обновлена сборка SergeiStrelec
+20.04.2020
+* Обновлена сборка Andreyonohov & Leha342 Lite
+* Обновлён аддон Комплекты установки Windows ± Office от SmokieBlahBlah
+16.04.2020
+* Обновлён Adobe Photoshop
+15.04.2020
+* Обновлён Runtime Software Pack
+13.04.2020
+* Обновлена сборка Andreyonohov & Leha342 Lite
+* Обновлён список Linux distro
+11.04.2020
+* Обновлена сборка mini10PE by niknikto
+09.04.2020
+* Обновлён аддон Acronis (newest)
+07.04.2020
+* Обновление сборки и утилит от Ratiborus
+27.03.2020
+* Обновлён Adobe Photoshop
+24.03.2020
+* Обновлена сборка BELOFF Lite
+17.03.2020
+* Обновлён список Windows distro
+16.03.2020
+* Обновлён список Linux distro
+12.03.2020
+* Обновлён список Windows distro
+07.03.2020
+* Обновлён список Linux distro
+03.03.2020
+* Обновлены аддоны TwinBoot и WInst
+* Обновлён список Linux distro
+01.03.2020
+* Исправлены ссылки в аддонах AdminPE и Acronis (newest)
+27.02.2020
+* Обновлена сборка Andreyonohov & Leha342 Lite
+26.02.2020
+* Очередное исправление парсинга ссылок с oszone.net
+25.02.2020
+* Обновлён Adobe Photoshop
+* Обновлён аддон PMagic
+20.02.2020
+* Обновлён список Windows distro
+19.02.2020
+* Обновлена сборка SergeiStrelec
+17.02.2020
+* Обновлён список Linux distro
+13.02.2020
+* Актуализированы сборки Windows от adguard
+12.02.2020
+* Обновлён список Linux distro
+10.02.2020
+* Обновлена сборка BELOFF Lite
+07.02.2020
+* Обновлён список Linux distro
+* WinContig заменён на Defraggler
+27.01.2020
+* Обновлён список Linux distro
+24.01.2020
+* Исправлена ссылка на пакет VC++ от Lisabon
+23.01.2020
+* Обновлён Adobe Photoshop
+22.01.2020
+* Обновлён ABBYY FineReader
+20.01.2020
+* Обновлена сборка Denysenko Stas
+16.01.2020
+* Обновлён список Windows distro
+15.01.2020
+* Обновлён список Linux distro
+13.01.2020
+* Обновлена сборка Andreyonohov & Leha342 Lite
+* Обновлён список Linux distro
+10.01.2020
+* Обновлён аддон R-Studio
+07.01.2020
+* Обновлена сборка mini10PE by niknikto
+* Обновлён список Linux distro
+05.01.2020
+* Обновлена сборка Andreyonohov & Leha342 Lite
+01.01.2020
+* Обновлена сборка 2k10 by conty9/korsak7
+31.12.2019
+* Обновлён список Linux distro
+28.12.2019
+* Обновлена сборка SergeiStrelec
+25.12.2019
+* Обновлён аддон PMagic
+* Обновлен R-Studio Network
+24.12.2019
++ Добавлен WinContig
+23.12.2019
+* Обновлён список Linux distro
+20.12.2019
+* Обновлены Nero BROM, TheBat!
+19.12.2019
+* Обновлён список Linux distro
+17.12.2019
+* Обновлён список Linux distro
+16.12.2019
+* Обновлён аддон TeraByte Software Suite
+14.12.2019
++ Добавлена возможность запускать \programs\Far Manager\Far*.msi в режиме Portable (запуск RunPortable.cmd)
+13.12.2019
+* Обновлён список Windows distro
+11.12.2019
+* Обновлён Adobe Photoshop
+05.12.2019
+* Обновлён список Linux distro
++ Добавлен ролик создания раздела NTFS и размещения там VHD-контейнера (на Win7/8.1 только для USB-HDD)
+* Обновлена сборка BELOFF Lite
+04.12.2019
++ Добавлен AOMEI Partition Assistant
+01.12.2019
++ Добавлен аддон Paragon Hard Disk Manager
+28.11.2019
+* Обновлены ссылки на Windows distro
+25.11.2019
+* Обновлён список Linux distro
+* Исправлен линк в Windows distro
+* "Косметика" списка аддонов
+24.11.2019
+* Обновлён аддон Memory Test Floppy Disk
+21.11.2019
+* Исправлена ссылка на пакет VC++ от Lisabon
+* Исправлены ссылки на скачивание Chrome Browser
+15.11.2019
+* Обновлена ссылка на резервную страницу (cloud.mail.ru) утилит Ratiborus
+12.11.2019
+* Обновлён Adobe Photoshop
+11.11.2019
++ Добавлен ABBYY FineReader
+9.11.2019
+* FarManager и 7-Zip теперь загружаются напрямую, а не открывают домашнюю страницу программы
+* Обновлён Adobe Photoshop
+7.11.2019
++ Добавлен ролик "Управление загрузчиками"
+6.11.2019
+* Обновлён модуль DFSee в аддонах PMagic и SysResCD
+5.11.2019
+* Обновлена сборка BELOFF Lite
++ Добавлен логотип проекта
+* Обновлён PMagic
+* Обновлена сборка MInstAll by Andreyonohov & Leha342 Lite
+* Дополнен ролик про Windows (в конце показываем путь в папке distros, куда копируется дистриб)
+4.11.2019
++ Добавлен дистриб Ubuntu 19.10
