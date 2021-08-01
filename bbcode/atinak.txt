@@ -1,0 +1,69 @@
+﻿[hr]
+[size=18][b][align=center]*** Acronis True Image «New Age» kit+ ***[/align][/b][/size]
+[hr]
+[img=right]https://libdepo.github.io/images/atinak0.png[/img]
+Содержит linux-версии «Acronis True Image»:
+[list][*]2013[tab]x64 [RU]
+[*]2014[tab]x64 [RU] Premium
+[*]2015[tab]x64 [RU]
+[*]2016[tab]х64 [RU]
+[*]2017[tab]х64 [RU]
+[*]2017[tab]х64 [RU] NG
+[*]2018[tab]х64 [RU]
+[*]2019[tab]х64 [RU]
+[*]2020[tab]х64 [RU]
+[*]2021[tab]x64 [RU]
+[/list]
+Содержит linux-версию "Acronis Disk Director":
+[list][*]12.5[tab]x64 [RU] Server[/list]
+
+Загрузка:
+[list][*]BIOS: wee63 (MBR) -> Grub4Dos -> ATINAK;
+[*]UEFI: GRUB2 (есть поддержка [i]SecureBoot[/i]).[/list]
+[spoiler=readme.txt][pre]
+
+ Acronis True Image "New Age" kit+
+ ---------------------------------
+
+ Содержит linux-версии "Acronis True Image":
+ -2013 		x64 [RU]
+ -2014 Premium	x64 [RU]
+ -2015 		х64 [RU]
+ -2016 		х64 [RU]
+ -2017 		х64 [RU]
+ -2017 NG 	х64 [RU]
+ -2018 		х64 [RU]
+ -2019 		х64 [RU]
+ -2020 		х64 [RU]
+ -2021 		x64 [RU]
+
+  Содержит linux-версию "Acronis Disk Director":
+ -12.5 Server   x64 [RU]
+
+ Поддерживает загрузку из BIOS и UEFI:
+ - загрузчик BIOS Grub4Dos поддерживает "горячие клавиши" и позволяет варьировать
+   параметры запуска в случае проблем (секция "Troubleshooting");
+   Схема загрузки: wee63 (MBR) -> Grub4Dos -> ATINAK.
+ - загрузчик UEFI GRUB2 поддерживает "горячие клавиши" и режим SecureBoot.
+
+ Инструкция по созданию загрузочной флешки (папка "setup"):
+ 1. Отформатируйте (если необходимо) флешку любым удобным способом (FAT/NTFS);
+ 2. Скопируйте маркерный файл "Создать_ATINAK_на_этой_флешке" в корень флешки;
+ 3. Запустите "make.cmd".
+
+ Для добавления в существующие проекты:
+ - из папки "flash_root" скопировать папку "ATINAK" в корень флешки;
+ - папка "configs" содержит примеры конфигов.
+
+ Примечания:
+ - в режиме UEFI возможна загрузка через "нативный" загрузчик Acronis;
+ - в случае проблем при загрузке в режиме UEFI SecureBoot можно установить
+   "нативный" загрузчик Acronis основным. Для этого скопируйте файлы
+   "bootx64.efi" и "bootx64.xml" из папки "\ATINAK\" в папку "\efi\boot\";
+ - при создании загрузочной флешки:
+   * можно отредактировать загрузочное меню (файл "menu.txt");
+   * старая загрузочная запись флешки сохраняется в файл "backup.mbr".
+
+[/pre][/spoiler]
+[br]
+[align=center][url=https://yadi.sk/d/-h3z2cN-zp5Fog&path=/atinakp.7z]Загрузить ATINAK+ [img]https://libdepo.github.io/images/download.png[/img][/url][/align]
