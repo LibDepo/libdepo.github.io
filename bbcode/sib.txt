@@ -1,0 +1,11 @@
+﻿[img=right]https://libdepo.github.io/images/sib0.png[/img]
+Сваял батничек для скачки и установки [b]StartIsBack++ 2.9.15[/b]
+
+[list]
+[*]скачивает с сайта StartIsBack
+[*]проверяет SHA1 (в комплекте прокси-длл для версии 2.9.15)
+[*]устанавливает
+[*]прописывает в реестр пару ключей и прокси-длл (для регистрации)
+[/list]
+
+[align=center][url=https://libdepo.github.io/cmd/sib.cmd]Сохранить CMD-файл [img]https://libdepo.github.io/images/save.png[/img][/url][tab][tab][url=https://github.com/LibDepo/libdepo.github.io/blob/main/cmd/sib.cmd]Просмотр кода [img]https://libdepo.github.io/images/view.png[/img][/url][/align]
