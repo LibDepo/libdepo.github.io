@@ -89,7 +89,7 @@ goto :eof
 :empty
 >tmp\tst.vbs echo WScript.Echo MsgBox(Replace(WScript.Arguments(0), "^", vbCrLf), WScript.Arguments(1), WScript.Arguments(2))
 for /f %%a in (
-'cscript.exe //nologo tmp\tst.vbs "Не найдена необходимая структура папок!^Перейти на сайт для получения справки?^^<Да>   : перейти на сайт^<Нет> : создать схему развёртывания^ " 19 " Ошибка"'
+'cscript.exe //nologo tmp\tst.vbs "┬Н┬е ┬н┬а┬й┬д┬е┬н┬а ┬н┬е┬о┬б├е┬о┬д┬и┬м┬а├п ├б├в├а├г┬к├в├г├а┬а ┬п┬а┬п┬о┬к!^┬П┬е├а┬е┬й├в┬и ┬н┬а ├б┬а┬й├в ┬д┬л├п ┬п┬о┬л├г├з┬е┬н┬и├п ├б┬п├а┬а┬в┬к┬и?^^<тАЮ┬а>   : ┬п┬е├а┬е┬й├в┬и ┬н┬а ├б┬а┬й├в^<┬Н┬е├в> : ├б┬о┬з┬д┬а├в├м ├б├е┬е┬м├г ├а┬а┬з┬в├▒├а├в├л┬в┬а┬н┬и├п^ " 19 " ┼╜├и┬и┬б┬к┬а"'
 ) do if %%a==6 (start https://usbtor.ru/viewtopic.php?t=2122) else if %%a==7 call "%~f0" scheme
 2>nul rd /q/s tmp bin
 goto :eof
@@ -102,5 +102,3 @@ bin\aria2c.exe http://sdi-tool.org/releases/%fname% -d tmp
 md tmp\new& cscript.exe tmp\tst.vbs "%CD%\tmp\new" "%CD%\tmp\%fname%"
 del /q ..\SDI_*.*
 robocopy.exe /e /move "%CD%\tmp\new" ..
-
-
