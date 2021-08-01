@@ -1,0 +1,343 @@
+[size=11][align=right][img]https://libdepo.github.io/images/poetry.png[/img]"...И представил я:
+город наводнился вдруг разумными людьми.
+Вышли все под DOS,
+а проклятый Windows удаляли, черт возьми!"[/align][/size][hr]
+[size=18][b][align=center]*** HD Diagnostic and Repair Tools ***[/align][/b][/size]
+[hr]
+[img=right]https://libdepo.github.io/images/hddarts0.gif[/img]
+[b][color=blue]Актуальная версия: [/color][color=red]09.07.2021[/color][/b]
+[br]
+[color=blue][b]Назначение проекта: [/b][/color][list]диагностика и исправление неисправностей, связанных с HDD.[/list]
+[br]
+[color=blue][b]Представляет собой: [/b][/color][list]образ дискеты ([b]HDDaRTs.ima[/b]), предназначенный для запуска из меню Grub4Dos / GRUB2 / Syslinux / Xorboot и т.п.
+
+[size=11]Дополнительно в папке Extra:[list]
+[*]HDDaRTs.gz - для запуска из GRUB2/Syslinux
+[*]menus.txt - примеры меню для всех популярных загрузчиков
+[*]memdisk - на всякий случай, из комплекта syslinux 4.07
+[/list][/size]
+[/list]
+[br]
+[color=blue][b]Область применения:[/b][/color]
+[list][*]Операционная система: нет (загрузка из BIOS; UEFI не поддерживается)
+[*]Разрядность: любая
+[/list]
+[br]
+[spoiler=О проекте]
+
+[u]Состав[/u]
+
+Проект включает в себя следующие виды ПО:
+[list]- для работы с HDD как устройством (физический уровень);
+- для работы с HDD как носителем данных (логический уровень);
+- драйверы и вспомогательные программы.
+[/list]
+Операционной системой проекта является FreeDOS.
+
+[u]Устройство проекта[/u]
+
+Проект представляет собой образ дискеты, предназначенный для запуска из меню Grub4Dos/GRUB2/Syslinux/XORBOOT и т.п.
+
+В качестве рабочей оболочки используется Volkov Commander 4.99. Запуск всех программ проекта осуществляется только  из  его меню (F2).  Это связано с тем, что некоторые программы требуют для корректной работы соблюдения ряда условий (например, запуск DOS-extender'а, включение поддержки мыши, переход в каталог программы).
+
+В проекте реализовано опциональное расширение возможностей системы путем "ручного" запуска соответствующих драйверов (подменю "Поддержка...").
+
+В проекте реализована поддержка UMB двумя способами - зависимая от чипсета (UMBPCI) и полностью "софтверная" (JEMM386).
+
+[u]Аппаратные требования[/u]
+
+ОЗУ:
+[list]Минимальный объем ОЗУ для запуска проекта -        48 Мб.
+Для включения функции кэширования         -       128 Мб.
+Комфортная работа в режиме Preview by Far - более 128 Мб.
+[/list]
+BIOS:
+[list]Для более корректной работы с HDD, рекомендуется включать режим работы контроллера - Legacy IDE.[/list]
+[br]
+[u]Стартовое меню DOS[/u]
+[br]
+[list][*]Standard configuration - загрузка менеджера HMA (XMGR.SYS), загрузка Volkov Commander. (Штатный режим загрузки проекта)
+
+[*]Activate UMB (UMBPCI) - попытка включить аппаратную поддержку UMB (UMBPCI), загрузка Volkov Commander. ("Быстрое" UMB, включение зависит от поддержки чипсета)
+
+[*]Activate UMB (JEMM386) - включение "софтверной" поддержки UMB (JEMM386), загрузка Volkov Commander. ("Медленное" UMB, работает всегда)
+
+[*]Preview by Far Manager 1.70 - режим просмотра. Загрузка программной связки: LFN + NTFS + CDROM + CACHE + MOUSE + FarManager. Не предназначен для диагностики и исправления. Работает не на всех компьютерах.
+[/list]
+[br]
+* (Включение поддержки UMB необходимо в тех случаях, когда не хватает памяти для работы приложений. Например, загружается много драйверов. Посмотреть распределение памяти можно с помощью утилиты MI.COM)
+
+** (Если при загрузке происходит "зависание", можно попробовать включить режим отладки. В DOS-меню нажать F8, выбрать необходимый пункт и далее загрузка каждого компонента будет сопровождаться подтверждением (Y/N)
+
+[u]Меню Volkov Commander[/u]
+
+[i]- Главное меню:[/i]
+[br]
+[list][*] Victoria 3.52
+[*] MHDD 4.6
+[*] HDAT2 7.3
+[*] ViVARD 0.4
+[*] HDD Regenerator 2011
+[*] DRevitalize 3.32
+[*] BadLBA
+[/list]
+
+Это ПО физического уровня. Оно предназначено для тестирования поверхности HDD, выявления и восстановления/скрытия сбойных секторов.
+[br]
+[list][*] HD Sentinel 1.21 - просмотр параметров S.M.A.R.T., AAM, Security.
+[*] Far Manager 1.70 - альтернативный файловый менеджер с поддержкой 7-Zip.
+[/list]
+[br]
+* (Far Manager может не запускаться на некоторых компьютерах. Архивирование 7-Zip работает через меню плагинов (F11)
+
+** (DRevitalize "special key sequence" для ремапа slow sectors на системном разделе - GO)
+
+[i]- Подменю "Восстановление...":[/i]
+[br]
+[list][*] TestDisk 7.2
+[*] PhotoRec 7.2
+[*] Active Uneraser 5.0
+[*] Media Tools Pro 5.1
+[*] Active Partition Recovery 3.0
+[*] MBR Work 1.08
+[/list]
+Это ПО логического уровня. Оно предназначено для восстановления MBR, Partition tables, файловой структуры.
+[br]
+[list][*] DiskPatch 4.0.300
+[*] SpinRite 6.0
+[*] DFSee 16.7
+[/list]
+Утилиты широкого профиля. Сочетают в себе элементы физического и логического уровней.
+[br]
+[list][*] Проверка разделов NTFS - утилита для проверки целостности NTFS. (NTFSCHK v5.00 от Winternals)
+[*] Drive SnapShot 1.41 - утилита для восстановления дисков/разделов из ранее созданного бэкапа.
+[*] X-Ways Replica 2.36 - утилита для клонирования дисков/разделов.[/list]
+[br]
+* (При выполнении операций с логическим уровнем рекомендуется включать кэширование. Это может серьезно ускорить общий ход выполнения)
+
+[i]- Подменю "Поддержка...":[/i]
+[br]
+[list][*] Включить поддержку NTFS - поддержка разделов с NTFS (NDOS 6.02).
+[*] Включить поддержку LFN (FAT32) - поддержка длинных имен FAT32 (DOSLFN 0.41c)
+[*] Включить поддержку CDROM - поддержка CD/DVD-ROM.
+
+[*] Включить поддержку USB - поддержка USB (драйвер от Panasonic 2.27).
+[*] ...Подключить USB Drive (DI1000DD) - назначение буквы диска.
+[*] ...Подключить USB Drive (NJ32DISK) - назначение буквы диска (альтернатива).
+[*] ...Подключить USB CD-ROM - поддержка USB CD-ROM.
+
+[*] Включить поддержку мыши - поддержка мыши (CuteMouse 2.1b4).
+[*] Включить кэширование дисков - поддержка UDMA и кэширование HDD/CD-ROM.
+[/list]
+[br]
+* (Порядок работы с USB-устройствами (HDD, Flash, CD-ROM) таков:
+[list]- запуск поддержки USB "Включить поддержку USB"
+- если устройство найдено, то запуск "...Подключить USB Drive" или "...Подключить USB CD-ROM")
+[/list]
+[br]
+** (Включение поддержки USB имеет смысл только при загрузке с CD-ROM)
+[br]
+[i]- Подменю "Доп. утилиты...":[/i]
+[br]
+[list][*] HDDL 3.1 - утилита широкого профиля, работа с физическим уровнем HDD.
+[*] DMDE 2.4.6 - очень мощный дисковый редактор.
+[*] ATA Tools 1.2 - утилита для "тонкой" работы со S.M.A.R.T. и Security.
+[*] HDD SECURITY SETUP 1.0 - утилита для работы с ATA Security командами.
+[*] SMARTUDM 2.0 - утилита для просмотра параметров S.M.A.R.T.
+[*] HDDSpeed 2.32 - утилита для оценки скорости HDD и простого тестирования.
+[*] SpinTest #15 - утилита для оценки мгновенной скорости HDD.
+[*] HDD Secure Erase 4.0 - утилита для стирания диска средствами самого HDD.
+
+[*] SeaTools 1.12 - утилита от Seagate, тестирование поверхности HDD.
+[*] Hitachi DFT 4.16 - утилита от IBM/Hitachi, тестирование HDD.
+[*] WDIdle 1.05 - утилита от WD для изменения времени "засыпания" HDD.
+
+[*] ATA Command Test 5A0 - утилита проверки ATA-интерфейса.
+[*] AHCI Command Test 3A1 - утилита проверки AHCI-интерфейса.
+[/list]
+[br]
+* (Утилита Hitachi DFT может некорректно работать в режиме JEMM386)
+
+** (Утилиты ST и DFT могут работать с любыми HDD)
+
+[u]Заключение[/u]
+[br]
+[align=center]Надеюсь, что проект HDDaRTs поможет Вам в Вашей работе.[/align]
+[/spoiler]
+[spoiler=Screenshots][align=center]
+[th]https://libdepo.github.io/images/hddarts1.gif[/th]
+[th]https://libdepo.github.io/images/hddarts2.gif[/th]
+[th]https://libdepo.github.io/images/hddarts3.gif[/th]
+[th]https://libdepo.github.io/images/hddarts4.gif[/th]
+[th]https://libdepo.github.io/images/hddarts5.gif[/th]
+[th]https://libdepo.github.io/images/hddarts6.gif[/th]
+[/align][/spoiler]
+[spoiler=Хитрости]
+Чтобы сделать загрузочную флешку из HDDaRTs.ima, выполните следующие шаги (инструкция для Windows 7 и выше):
+[br]
+Очистить и разметить флешку: Пуск - Выполнить (или нажать [i]Win+R[/i]) - diskpart
+[code]
+list disk
+sel disk #		{# - номер диска, который флешка}
+clean
+create part prim
+active
+assign
+format fs=fat32 quick	{fs=ntfs, если нужен NTFS}
+exit[/code][br]
+Скачать GRLDR по адресу [url=http://b.chenall.net/grldr]http://b.chenall.net/grldr[/url] и переименовать его в BOOTMGR
+[br]
+Создать файл menu.lst
+[code]
+default 0
+timeout 0
+
+title hddarts
+map --mem /hddarts.ima (fd0)
+map --hook
+rootnoverify (fd0)
+chainloader (fd0)+1[/code]
+[br]
+Записать в корень флешки три файла: HDDaRTs.ima, menu.lst, BOOTMGR (который бывший GRLDR).
+[br][align=center]...[/align][br]
+Чтобы протестировать работу HDDaRTs в эмуляторе QEMU, можно использовать его сетевые функции.
+
+Создайте файл menu.lst
+[code]
+default 0
+timeout 0
+
+title hddarts
+map --mem (pd)/hddarts.ima (fd0)
+map --hook
+rootnoverify (fd0)
+chainloader (fd0)+1
+[/code]
+
+Создайте папку "C:\NetFolder" и разместите в ней три файла: GRLDR, HDDaRTs.ima и созданный menu.lst.
+
+Запустите QEMU командой:
+[code]
+qemu.exe -net nic,model=e1000 -net user,tftp=C:\NetFolder,bootfile=grldr
+[/code]
+[/spoiler]
+[spoiler=Создать ISO]
+[align=center][url=https://libdepo.github.io/cmd/hddarts_make_iso.cmd]Сохранить CMD-файл [img]https://libdepo.github.io/images/save.png[/img][/url][tab][tab][url=https://github.com/LibDepo/libdepo.github.io/blob/main/cmd/hddarts_make_iso.cmd]Просмотр кода [img]https://libdepo.github.io/images/view.png[/img][/url][/align]
+[/spoiler]
+[spoiler=История изменений]
+[b]09.07.2021[/b]
+[list][*]Обновлён HDAT2 7.3
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]25.04.2021[/b]
+[list][*]Обновлён HDAT2 7.2
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]01.01.2021[/b]
+[list][*]Обновлён HDAT2 7.1
+[*]Обновлён DFSee 16.7
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]04.05.2020[/b]
+[list][*]Обновлён HDAT2 7.0
+[*]Обновлены TestDisk, PhotoRec
+[*]Чуть подправлен дизайн
+[/list]
+
+[b]13.03.2020[/b]
+[list][*]Обновлён DRevitalize 3.32
+[/list]
+
+[b]17.02.2020[/b]
+[list][*]Обновлён DFSee 16.6
+[*]Обновлены TestDisk, PhotoRec
+[*]Обновлены системные файлы
+[/list]
+
+[b]28.10.2019[/b]
+[list][*]Обновлён DFSee 16.5
+[*]Обновлён UMBPCI 3.89
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]02.09.2019[/b]
+[list][*]Обновлён HDAT2 6.6
+[*]Обновлён DFSee 16.3
+[*]Добавлен HDD SECURITY SETUP 1.0
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]11.07.2019[/b]
+[list][*]Обновлён DFSee 16.1
+[*]Обновлены TestDisk 7.2, PhotoRec 7.2
+[/list]
+
+[b]24.03.2019[/b]
+[list][*]Обновлён HDAT2 6.5
+[*]Обновлён DFSee 15.6
+[*]Обновлены TestDisk, PhotoRec
+[*]Обновлён UMBPCI 3.88
+[/list]
+
+[b]24.12.2018[/b]
+[list][*]Обновлён DFSee 15.5
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]13.09.2018[/b]
+[list][*]Обновлён DFSee 15.3
+[/list]
+
+[b]31.07.2018[/b]
+[list][*]Обновлён HDAT2 6.4
+[*]Обновлён DFSee 15.2
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]09.07.2018[/b]
+[list][*]Обновлён HDAT2 6.3
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]13.06.2018[/b]
+[list][*]Обновлён HDAT2 6.2
+[*]Обновлён DFSee 15.1
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]24.05.2018[/b]
+[list][*]Обновлён HDAT2 6.1
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]05.04.2018[/b]
+[list][*]Обновлён DFSee 15.0
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]21.02.2018[/b]
+[list][*]Обновлён DFSee 14.12
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]09.01.2018[/b]
+[list][*]Обновлён HDAT2 6.0b7
+[*]Обновлён DFSee 14.11
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]25.12.2017[/b]
+[list][*]Обновлён HDAT2 6.0b6
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+
+[b]07.11.2017[/b]
+[list][*]Обновлён DRevitalize 3.31
+[*]Обновлён DFSee 14.10
+[*]Обновлены TestDisk, PhotoRec
+[/list]
+[/spoiler]
+[align=center][url=https://libdepo.github.io/files/HDDaRTs.7z]Загрузить HDDaRTs [img]https://libdepo.github.io/images/download.png[/img][/url][/align]

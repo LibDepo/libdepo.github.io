@@ -1,0 +1,93 @@
+[size=11][align=right][img]https://libdepo.github.io/images/poetry.png[/img]"- Доктор, у меня провалы в памяти!
+- И давно у Вас эти... провалы?&nbsp;[tab] 
+- Какие провалы, доктор?!"[tab][tab]&nbsp;&nbsp;&nbsp;[/align][/size]
+[hr]
+[size=18][b][align=center]*** Memory Test Floppy Disk ***[/align][/b][/size]
+[hr]
+[img=right]https://libdepo.github.io/images/mtfd0.gif[/img]
+[br]
+[b][color=blue]Актуальная версия: [/color][color=black]24.07.2019[/color][/b]
+[br]
+[color=blue][b]Назначение проекта: [/b][/color][list]диагностика неисправностей, связанных с RAM.[/list]
+[br]
+[color=blue][b]Представляет собой: [/b][/color][list]образ дискеты ([b]MTFD.ima[/b]), предназначенный для запуска из меню Grub4Dos / GRUB2 / Syslinux / Xorboot и т.п.[/list]
+[br]
+[color=blue][b]Область применения:[/b][/color]
+[list][*]Операционная система: нет (загрузка из BIOS; UEFI не поддерживается)
+[*]Разрядность: x86/x64
+[/list]
+[br]
+[spoiler=About.txt]
+[pre]
+ ====================================================
+             -= Memory Test Floppy Disk =-
+ ====================================================
+  Build:      24.07.2019
+  Author:     Ander_73
+  Firmware:   BIOS
+  Bits:       x86/x64
+  Support:    https://usbtor.ru/viewtopic.php?t=1762
+ ====================================================
+ Used sources:
+ ====================================================
+  Memtest86+: https://packages.debian.org/memtest86+
+  Memtest86:  https://www.memtest86.com
+  MemTest32,
+  MemTest64:  https://www.hcidesign.com
+  GoldMemory: http://www.goldmemory.cz
+  WinDiag,
+  MemScope:   discontinued
+ ====================================================
+[/pre]
+[/spoiler]
+[spoiler=Благодарности]
+Камрадам с [b]ru-board[/b] ([b]raddyst[/b], [b]Skitz0[/b], [b]Taciturn[/b]) за помощь в скачивании RULEZ-ного WAREZ-а.
+[/spoiler]
+[spoiler=Примеры использования]
+[br]
+[u]Grub4Dos:[/u]
+[br]
+title Memory Test Floppy Disk
+[tab]map --mem /IMAGES/MTFD.GZ (fd0)
+[tab]map --hook
+[tab]rootnoverify (fd0)
+[tab]chainloader (fd0)+1
+[br]
+[u]GRUB2:[/u]
+[br]
+menuentry "Memory Test Floppy Disk" {
+[tab]linux16  /IMAGES/memdisk raw floppy
+[tab]initrd16 /IMAGES/MTFD.GZ
+}
+[br]
+[u]SYSLINUX:[/u]
+[br]
+LABEL mtfd
+[tab]MENU LABEL Memory Test Floppy Disk
+[tab]KERNEL memdisk
+[tab]INITRD /IMAGES/MTFD.GZ
+[tab]APPEND raw floppy
+[br]
+[u]Xorboot:*[/u]
+[br]
+[tab]@ Boot type:   Search & boot from file
+[tab]File name:     IMAGES\MTFD.ima
+[tab]@ System type: FDD image (*.img;*.ima)
+
+[color=darkblue]* Примечание:[/color] поскольку Xorboot не умеет работать со сжатыми образами, необходимо предварительно извлечь MTFD.ima из MTFD.GZ (например, с помощью архиватора 7z).
+[/spoiler]
+[spoiler=Создать ISO]
+[align=center][url=https://libdepo.github.io/cmd/mtfd_make_iso.cmd]Сохранить CMD-файл [img]https://libdepo.github.io/images/save.png[/img][/url][tab][tab][url=https://github.com/LibDepo/libdepo.github.io/blob/main/cmd/mtfd_make_iso.cmd]Просмотр кода [img]https://libdepo.github.io/images/view.png[/img][/url][/align]
+[/spoiler]
+[spoiler=История изменений]
+[b]24.07.2019[/b]
+[list]
+[*]Добавлены WinDiag, MemScope
+[/list]
+[b]22.07.2019[/b]
+[list]
+[*]Обновлён MemTest64 - v6.2
+[*]Добавлен MemTest32 - v3.8
+[/list]
+[/spoiler]
+[align=center][url=https://libdepo.github.io/files/MTFD.GZ]Загрузить MTFD [img]https://libdepo.github.io/images/download.png[/img][/url][/align]
