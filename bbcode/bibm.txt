@@ -1,0 +1,285 @@
+﻿[hr]
+[size=18][b][align=center]*** BIBM++/BIU++/IFL++ ***[/align][/b][/size]
+[hr]
+[img=right]https://libdepo.github.io/images/bibm0.gif[/img]
+[br]
+[b][color=blue]Актуальная версия: [/color][color=red]06.07.2021[/color][/b]
+[br]
+[color=blue][b]Состав и назначение проекта: [/b][/color][list]
+[*] Partition Manager[tab](управление разделами)
+[*] Boot Manager [tab][tab](управление мульти-загрузкой ОС)
+[*] Disk Imaging   [tab][tab](клонирование/бекап/восстановление дисков и разделов)
+[*] Scripting[tab][tab][tab][tab](выполнение сценариев по обслуживанию ПК)
+[*] BWP  [tab][tab][tab][tab][tab](сброс паролей учётных записей Windows)
+[/list]
+[br]
+[color=blue][b]Представляет собой: [/b][/color][list]
+[*]BIBM++: образ дискеты ([b]BIBMPP.ima[/b]), предназначенный для запуска из меню Grub4Dos / GRUB2 / Syslinux / Xorboot и т.п.
+[*]BIU++: папка EFI\BOOTIT с набором файлов для запуска из режима UEFI
+[*]IFL++: LINUX (kernel+ramfs) для запуска из BIOS/UEFI
+[/list]
+[br]
+[color=blue][b]Область применения:[/b][/color][list]
+[*]BIBM++: загрузка из BIOS
+[*]BIU++: загрузка из UEFI x64
+[*]IFL++: загрузка из BIOS/UEFI
+[/list]
+[br]
+[spoiler=Краткое руководство]
+* При загрузке (BIBM++, IFL++) на экран выводится список скриптов обслуживания ПК (в том числе, [b]Bypass Windows Password[/b]).
+
+[u]BIBM++, BIU++:[/u]
+* Перейти к стандартному десктопу [b]BootIt BM[/b] - нажать клавишу [i]Esc[/i] или выбрать последний пункт.
+* Вновь вывести список скриптов - на десктопе нажать [i]Run[/i] и выбрать из списка [b]-= SCRIPTS MENU =-.TBS[/b]
+
+[u]IFL++[/u]
+* Вновь вывести список скриптов - на десктопе нажать [i]ПКМ[/i] и выбрать из списка [b]Display User Scripts Menu[/b]
+[/spoiler]
+[spoiler=Использованное ПО]
+[list]
+[*]BootIt Bare Metal с набором стандартных скриптов ([url=https://www.terabyteunlimited.com/bootit-bare-metal.htm]ссылка[/url])
+[*]BootIt UEFI с набором стандартных скриптов ([url=https://www.terabyteunlimited.com/bootit-uefi.htm]ссылка[/url])
+[*]Image for Linux с набором стандартных скриптов ([url=https://www.terabyteunlimited.com/image-for-linux.htm]ссылка[/url])
+[*]Набор скриптов от [b]dialmak[/b] ([url=http://forum.ru-board.com/topic.cgi?forum=35&topic=11112&start=1120#6]ссылка[/url])
+[*]Bypass Windows Password от [b]nikzzzz[/b] & [b]dialmak[/b] ([url=https://usbtor.ru/viewtopic.php?t=1395]ссылка[/url])
+[*]DFSee от [b]FSYS Software[/b] ([url=https://www.dfsee.com/]ссылка[/url])
+[*]Testdisk от [b]Christophe GRENIER[/b] ([url=https://www.cgsecurity.org/wiki/TestDisk]ссылка[/url])
+[/list]
+[/spoiler]
+[spoiler=Примеры использования]
+[align=center][b]BIBM++[/b] (BIOS)[/align]
+[u]Grub4Dos:[/u]
+[br]
+title BIBM++
+[tab]map --mem /IMAGES/BIBMPP.GZ (fd0)
+[tab]map --hook
+[tab]rootnoverify (fd0)
+[tab]chainloader (fd0)+1
+[br]
+[u]GRUB2:[/u]
+[br]
+menuentry "BIBM++" {
+[tab]linux16  /IMAGES/memdisk raw floppy
+[tab]initrd16 /IMAGES/BIBMPP.GZ
+}
+[br]
+[u]SYSLINUX:[/u]
+[br]
+LABEL bibm++
+[tab]MENU LABEL BIBM++
+[tab]KERNEL memdisk
+[tab]INITRD /IMAGES/BIBMPP.GZ
+[tab]APPEND raw floppy
+[br]
+[u]Xorboot:*[/u]
+[br]
+[tab]@ Boot type:   Search & boot from file
+[tab]File name:     IMAGES\BIBMPP.ima
+[tab]@ System type: FDD image (*.img;*.ima)
+
+[color=darkblue]* Примечание:[/color] поскольку Xorboot не умеет работать со сжатыми образами, необходимо предварительно извлечь BIBMPP.ima из BIBMPP.GZ (например, с помощью архиватора 7z).
+[hr]
+[align=center][b]BIU++[/b] (UEFI)[/align]
+[u]GRUB2:[/u]
+[br]
+menuentry "BIU++" {
+[tab]chainloader /EFI/BOOTIT/BOOTIT.EFI
+}
+
+или
+
+menuentry "BIU++" {
+[tab]chainloader /EFI/BOOTIT/BOOTX64.EFI
+}
+[br]
+[u]rEFInd:[/u]
+[br]
+menuentry "BIU++" {
+[tab]loader \efi\bootit\bootit.efi
+}
+[hr]
+[align=center][b]IFL++[/b] (UEFI)[/align]
+[u]GRUB2:[/u]
+[br]
+menuentry "Image for Linux - best available graphics mode" {
+[tab]linux   /ifl/vmlinuz uefimode=yes xres=800 iflkmap=us ktl=qwerty iflbflag=0
+[tab]initrd  /ifl/initrmfs.gz
+}
+menuentry "Image for Linux - best available frame buffer mode" {
+[tab]linux   /ifl/vmlinuz uefimode=yes switchx=yes xres=800 iflkmap=us ktl=qwerty iflbflag=0
+[tab]initrd  /ifl/initrmfs.gz
+}
+[align=center][b]IFL++[/b] (BIOS)[/align]
+[u]Grub4Dos:[/u]
+[br]
+title Image for Linux - best available graphics mode
+[tab]kernel /ifl/vmlinuz xres=800 vga=788 iflkmap=us ktl=qwerty iflbflag=0
+[tab]initrd  /ifl/initrmfs.gz
+
+title Image for Linux - best available frame buffer mode
+[tab]kernel /ifl/vmlinuz switchx=yes xres=800 vga=788 iflkmap=us ktl=qwerty iflbflag=0
+[tab]initrd  /ifl/initrmfs.gz
+[br]
+[u]SYSLINUX:[/u]
+[br]
+LABEL ifl++
+[tab]MENU LABEL Image for Linux - best available graphics mode
+[tab]KERNEL /ifl/vmlinuz
+[tab]INITRD  /ifl/initrmfs.gz
+[tab]APPEND xres=800 vga=788 iflkmap=us ktl=qwerty iflbflag=0
+
+LABEL ifl++
+[tab]MENU LABEL Image for Linux - best available frame buffer mode
+[tab]KERNEL /ifl/vmlinuz
+[tab]INITRD  /ifl/initrmfs.gz
+[tab]APPEND switchx=yes xres=800 vga=788 iflkmap=us ktl=qwerty iflbflag=0
+[/spoiler]
+[spoiler=Создать ISO]
+[align=center][url=https://libdepo.github.io/cmd/bibm_make_iso.cmd]Сохранить CMD-файл [img]https://libdepo.github.io/images/save.png[/img][/url][tab][tab][url=https://github.com/LibDepo/libdepo.github.io/blob/main/cmd/bibm_make_iso.cmd]Просмотр кода [img]https://libdepo.github.io/images/view.png[/img][/url][/align]
+[/spoiler]
+[spoiler=История изменений]
+[b]06.07.2021[/b]
+[list]
+[*]Обновлён BIBM 1.73
+[*]Обновлён IMAGE 3.46
+[*]Обновлён BIU 1.25
+[/list]
+
+[b]21.06.2021[/b]
+[list]
+[*]Обновлён BIBM 1.72
+[*]Обновлён IMAGE 3.45
+[*]Обновлён TBOSDT 2.04
+[*]Обновлён BIU 1.24
+[/list]
+
+[b]30.05.2021[/b]
+[list]
+[*]Обновлён BIBM 1.71
+[*]Обновлён IMAGE 3.44
+[*]Обновлён TBOSDT 2.03
+[*]Обновлён BIU 1.23
+[/list]
+
+[b]18.03.2021[/b]
+[list]
+[*]Обновлён BIBM 1.70
+[*]Обновлён IMAGE 3.43
+[*]Обновлён TBOSDT 2.02
+[/list]
+
+[b]22.12.2020[/b]
+[list]
+[*]Обновлён BIBM 1.69
+[*]Обновлён BIU 1.21
+[*]Обновлён IMAGE 3.42
+[/list]
+
+[b]05.08.2020[/b]
+[list]
+[*]Обновлён TBOSDT 2.01
+[*]Обновлён BIBM 1.68
+[*]Обновлён BIU 1.20
+[*]Обновлён IMAGE 3.41
+[*]Обновлены скрипты
+[*]В комплект IFL++ добавлен Testdisk
+[/list]
+
+[b]09.06.2020[/b]
+[list]
+[*]Обновлён TBOSDT 2.00
+[*]Обновлён BIBM 1.67
+[*]Обновлён BIU 1.19
+[*]Обновлён IMAGE 3.40
+[*]Обновлены скрипты
+[*]В комплект IFL++ добавлен DFSee 16.6
+[/list]
+
+[b]24.04.2020[/b]
+[list]
+[*]Обновлён TBOSDT 1.99
+[*]Обновлён BIBM 1.66
+[*]Обновлён BIU 1.18
+[*]Обновлён IMAGE 3.39
+[*]Обновлены скрипты+fixboot.tbs
+[/list]
+
+[b]02.03.2020[/b]
+[list]
+[*]Обновлён TBOSDT 1.98
+[*]Обновлён BIBM 1.65
+[*]Обновлён BIU 1.17
+[*]Обновлён IMAGE 3.38
+[*]Обновлены скрипты
+[/list]
+
+[b]27.01.2020[/b]
+[list]
+[*]Обновлён TBOSDT 1.97
+[*]Обновлён BIBM 1.64
+[*]Обновлён BIU 1.16
+[*]Обновлён IMAGE 3.37
+[*]Обновлены скрипты
+
+[*]В скрипт BWP добавлен ChangePassword
+[*]Во все пакеты добавлен tbosdtw.exe
+[*]BIBM теперь стартует в режиме 1024х768х64К
+[/list]
+
+[b]23.12.2019[/b]
+[list]
+[*]Обновлён TBOSDT 1.96
+[*]Обновлён BIBM 1.63
+[*]Обновлён BIU 1.15
+[*]Обновлён IMAGE 3.36
+[*]Обновлены скрипты
+[/list]
+
+[b]16.12.2019[/b]
+[list]
+[*]Обновлён TBOSDT 1.95
+[*]Обновлён BIBM 1.62
+[*]Обновлён BIU 1.14
+[*]Обновлён IMAGE 3.35
+[*]Обновлены скрипты
+[*]Включено отображение в меню скриптов оригинального osdtool.tbs
+[/list]
+
+[b]15.11.2019[/b]
+[list]
+[*]Обновлён TBOSDT 1.94
+[*]Обновлён BIBM 1.61
+[*]Обновлён BIU 1.13
+[*]Обновлён IMAGE 3.34
+[*]Обновлены скрипты
+[/list]
+
+[b]21.10.2019[/b]
+[list]
+[*]Обновлён TBOSDT 1.93
+[*]Обновлён BIBM 1.60
+[*]Обновлён BIU 1.12
+[*]Обновлён IMAGE 3.33
+[*]Обновлены скрипты
+[/list]
+
+[b]16.09.2019[/b]
+[list]
+[*]Обновлён TBOSDT 1.92
+[*]Обновлены скрипты
+[/list]
+
+[b]03.09.2019[/b]
+[list]
+[*]Обновлены скрипты
+[*]Обновлён IMAGE 3.32
+[*]Обновлён TBOSDT 1.91
+[*]Обновлён BOOTIT 1.59
+[/list]
+
+[b]12.08.2019[/b]
+[list]
+[*]Первый релиз
+[/list]
+[/spoiler]
+[align=center][url=https://yadi.sk/d/WHFSSnffp84nQQ]Загрузить [img]https://libdepo.github.io/images/download.png[/img][/url][/align]
