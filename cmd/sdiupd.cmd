@@ -87,10 +87,11 @@ goto :eof
 ::: for %%i in ("%~dp0SDI_%xOS%R*.exe") do start %%i -cfg:%tmp%\sdi.cfg& exit
 
 :empty
+>nul chcp 65001
 >tmp\tst.vbs echo WScript.Echo MsgBox(Replace(WScript.Arguments(0), "^", vbCrLf), WScript.Arguments(1), WScript.Arguments(2))
 for /f %%a in (
-'cscript.exe //nologo tmp\tst.vbs "¥ ­ ©¤¥­  ­¥®¡å®¤¨¬ ï áâàãªâãà  ¯ ¯®ª!^¥à¥©â¨ ­  á ©â ¤«ï ¯®«ãç¥­¨ï á¯à ¢ª¨?^^<„ >   : ¯¥à¥©â¨ ­  á ©â^<¥â> : á®§¤ âì áå¥¬ã à §¢ñàâë¢ ­¨ï^ " 19 " Žè¨¡ª "'
-) do if %%a==6 (start https://usbtor.ru/viewtopic.php?t=2122) else if %%a==7 call "%~f0" scheme
+'cscript.exe //nologo tmp\tst.vbs "Не найдена необходимая структура папок!^Перейти на сайт для получения справки?^^<Да>   : перейти на сайт^<Нет> : создать схему развёртывания^ " 19 " Ошибка"'
+) do if %%a==6 (start https://usbtor.ru/viewtopic.php?t=2122) else if %%a==7 >nul chcp 866& call "%~f0" scheme
 2>nul rd /q/s tmp bin
 goto :eof
 
