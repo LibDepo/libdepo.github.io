@@ -1,0 +1,24 @@
+﻿[img=right]https://libdepo.github.io/images/acronis0.png[/img]
+Просто из озорства, сваял мини ISO-комплект (всего [b]158 Мб[/b]!) из "сладкой парочки":
+[list]
+[*][s]Acronis True Image 2020  Home    (build 24.6.25700)[/s]
+[*][s]Acronis True Image 2021  Home    (build 25.4.30290)[/s]
+[*][s]Acronis True Image 2021  Home    (build 25.4.30480)[/s]
+[*][s]Acronis True Image 2021  Home    (build 25.5.32010)[/s]
+[*][s]Acronis True Image 2021  Home    (build 25.6.34340)[/s]
+[*][s]Acronis True Image 2021  Home    (build 25.6.35860)[/s]
+[*][s]Acronis True Image 2021  Home    (build 25.7.39184)[/s]
+[*]Acronis True Image 2021  Home    (build 25.8.39216)
+[*]Acronis Disk Director 12 Server  (build 12.5.163)
+[/list]
+[br]
+Особенности:
+[list][*]только версии [b]х86[/b]
+[*]ramfs перепакованы в XZ
+[*]русский интерфейс по умолчанию
+[*]минималистичное меню загрузки (ручной ввод цифры и Enter)
+[/list]
+[br]
+Загрузка:
+[list][*]только BIOS[/list]
+[align=center][url=https://yadi.sk/d/qFj3wwUcInI7xw]Загрузить [img]https://libdepo.github.io/images/download.png[/img][/url][/align]
