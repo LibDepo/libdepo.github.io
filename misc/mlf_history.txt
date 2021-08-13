@@ -1,3 +1,5 @@
+13.08.2021
+* Обновлён аддон Active@ BootDisk
 02.08.2021
 * Обновлена сборка System software for Windows by CUTA
 30.07.2021
