@@ -12,9 +12,14 @@ for /f "tokens=1* delims=/" %%a in ('^<tmp\idx find /i "full.exe"') do for %%c i
 :next
 cscript //nologo tmp\tst.vbs "https://libdepo.github.io/files/aria2c.cab" "tmp\aria.cab"
 expand tmp\aria.cab -f:*.exe tmp
-
-tmp\aria2c.exe "%url%" -x4 -s4 -d K-LiteCodecs --file-allocation=trunc
+>tmp\list (
+ echo %url%
+ echo https://yt-dl.org/latest/youtube-dl.exe
+ echo  out=youtube-dl.ex
+)
+tmp\aria2c.exe -itmp\list -x4 -s4 -d K-LiteCodecs --file-allocation=trunc
 rd /q/s tmp
 
 :install
 for %%i in (K-LiteCodecs\*.exe) do "%%i" /silent /norestart
+copy /y K-LiteCodecs\youtube-dl.ex "%ProgramFiles(x86)%\K-Lite Codec Pack\MPC-HC64\youtube-dl.exe"
