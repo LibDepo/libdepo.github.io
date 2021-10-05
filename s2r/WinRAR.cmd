@@ -4,19 +4,18 @@
 2>nul cd/d%windir%\sysnative&&(cmd/c"%~f0"&exit)
 
 cd /d "%~dp0"
-set "url=https://www.rarlab.com/rar/winrar-x64-602ru.exe"
-for %%i in (%url%) do set "fname=WinRAR\%%~nxi"
-
 :load
-if exist %fname% goto install
-2>nul md WinRAR
->tst.vbs echo set x=CreateObject("Microsoft.XMLHTTP") : x.Open "GET", WSh.Arguments(0), False : x.Send : With CreateObject("Adodb.Stream") : .type = 1 : .open : .write x.responseBody : .savetofile WSh.Arguments(1), 2 : End With
-cscript //nologo tst.vbs "%url%" "%fname%"
-del /q tst.vbs
+if exist WinRAR\*.exe goto install
+2>nul md WinRAR tmp
+>tmp\tst.vbs echo set x=CreateObject("Microsoft.XMLHTTP") : x.Open "GET", WSh.Arguments(0), False : x.Send : With CreateObject("Adodb.Stream") : .type = 1 : .open : .write x.responseBody : .savetofile WSh.Arguments(1), 2 : End With
+cscript //nologo tmp\tst.vbs "https://www.rarlab.com/download.htm" "tmp\idx"
+for /f tokens^=^2^ delims^=^" %%a in ('^<tmp\idx find "-x64-"^| find "ru.exe"') do set "fname=%%~nxa"
+cscript //nologo tmp\tst.vbs "https://www.rarlab.com/rar/%fname%" "WinRAR\%fname%"
+rd /q/s tmp
 goto load
 
 :install
-%fname% /S
+for %%i in (WinRAR\*.exe) do "%%i" /S
 certutil -decode "%~f0" "%ProgramW6432%\WinRAR\rarreg.key"
 exit
 
