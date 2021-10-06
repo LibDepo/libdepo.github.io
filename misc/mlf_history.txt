@@ -1,5 +1,6 @@
 06.10.2021
 * Обновлён список Windows distro (Windows 11)
+* Обновлён аддон Memory Test Floppy Disk (MemTest 9.3 Pro)
 21.09.2021
 * Обновлён аддон PMagic
 14.09.2021
