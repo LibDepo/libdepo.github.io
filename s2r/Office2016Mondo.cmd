@@ -1,7 +1,7 @@
 @echo off
 
 >nul 2>&1 dism|| (start cmd /c "color 0c& mode 45,4& @echo/& @echo    *** Требуются права Администратора! ***& @echo/& @pause"& goto :eof)
-2>nul cd/d%windir%\sysnative&&(cmd/c"%~f0"&exit)
+2>nul cd/d%windir%\sysnative&&(cmd/c"%~f0"&goto :eof)
 
 cd /d "%~dp0"
 if exist Office2016Mondo\Office\Data\v64.cab cd Office2016Mondo& goto install
@@ -37,6 +37,7 @@ for /f %%x in ('dir /b ..\root\Licenses16\MondoVL_MAK*.xrm-ms') do cscript ospp.
 
 cscript ospp.vbs /inpkey:HFTND-W9MK4-8B7MJ-B6C4G-XQBR2
 cscript ospp.vbs /sethst:kms.digiboy.ir
+cscript ospp.vbs /setprt:1688
 cscript ospp.vbs /act
 
 exit
