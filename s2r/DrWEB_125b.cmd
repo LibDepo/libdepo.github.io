@@ -12,6 +12,7 @@ expand tmp\aria.cab -f:*.exe tmp
 set "url=https://beta.drweb.ru/files/?unreg=t&p=win/12.5"
 tmp\aria2c.exe "%url%/drweb-1250-win-space-beta-nightly.exe&lng=ru&t=f" -x5 -s5 -d DrWEB --file-allocation=trunc
 tmp\aria2c.exe "%url%/keys/drweb32.key&lng=ru&t=f" -d DrWEB
+tmp\aria2c.exe https://download.geo.drweb.com/pub/drweb/tools/drw_remover.exe -d DrWEB
 rd /q/s tmp
 
 >DrWEB\Getkey.url (
