@@ -20,4 +20,4 @@ set /a c+=1& goto loop
 msiexec /i https://farmanager.com/%var:.x86.=.x64.% /passive
 msiexec /i https://www.7-zip.org/a/7z2103-x64.msi /passive
 for %%i in ("%ProgramFiles%\7-Zip\*.exe") do mklink "%windir%\%%~nxi" "%%~i"
-copy "%ProgramFiles%\Far Manager\Addons\Macros\Panel.Esc.lua" "%APPDATA%\Far Manager\Profile\Macros\scripts"
+robocopy "%ProgramFiles%\Far Manager\Addons\Macros" "%APPDATA%\Far Manager\Profile\Macros\scripts" Panel.Esc.lua
