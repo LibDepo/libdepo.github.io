@@ -1,7 +1,7 @@
 @echo off
 
 >nul 2>&1 dism|| (start cmd /c "color 0c& mode 45,4& @echo/& @echo    *** Требуются права Администратора! ***& @echo/& @pause"& exit)
-2>nul cd/d%windir%\sysnative&&(cmd/c"%~f0"&exit)
+if exist %windir%\sysnative %windir%\sysnative\cmd/c"%~f0"%*&goto:eof
 
 cd /d "%~dp0"
 set "url=https://farmanager.com/download.php?l=ru"
@@ -20,3 +20,4 @@ set /a c+=1& goto loop
 msiexec /i https://farmanager.com/%var:.x86.=.x64.% /passive
 msiexec /i https://www.7-zip.org/a/7z2103-x64.msi /passive
 for %%i in ("%ProgramFiles%\7-Zip\*.exe") do mklink "%windir%\%%~nxi" "%%~i"
+copy "%ProgramFiles%\Far Manager\Addons\Macros\Panel.Esc.lua" "%APPDATA%\Far Manager\Profile\Macros\scripts"
