@@ -36,9 +36,17 @@ cls
 )
 diskpart /s %tmp%\s
 call :isOK|| goto run
+:size
 echo/
 echo/
-set sz=& set /p "sz=Enter FAT32 bootable partition size, Mb: "|| goto quit
+set sz=& set /p "sz=Enter FAT32 partition size, Mb [empty = quit, max = 32768]: "|| goto quit
+if /i "%sz%"=="max" set sz=32768
+2>nul set /a sz=%sz%|| goto size
+if %sz%==0 goto size
+if %sz% gtr 32768 (
+ mshta vbscript:Execute("MsgBox ""Max. size of FAT32 volume is 32Gb!"",16,"" Error"":close"^)
+ goto size
+)
 cls
 >%tmp%\s (
  echo sel dis %dsk%
