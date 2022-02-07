@@ -81,7 +81,7 @@ goto quit
 :isOK
 echo/
 echo/
-choice /m "This is correct?"
+choice /m "Is this correct?"
 if %errorlevel%==2 exit /b 1
 exit /b 0
 
