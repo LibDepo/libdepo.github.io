@@ -39,14 +39,17 @@ call :isOK|| goto run
 :size
 echo/
 echo/
-set sz=& set /p "sz=Enter FAT32 partition size, Mb [empty = quit, max = 32768]: "|| goto quit
+set sz=& set /p "sz=1st part: enter FAT32 partition size, Mb [empty = quit, max = 32768]: "|| goto quit
 if /i "%sz%"=="max" set sz=32768
 2>nul set /a sz=%sz%|| goto size
 if %sz%==0 goto size
 if %sz% gtr 32768 (
- mshta vbscript:Execute("MsgBox ""Max. size of FAT32 volume is 32Gb!"",16,"" Error"":close"^)
+ mshta vbscript:Execute("MsgBox ""Max. size of FAT32 partition is 32Gb!"",16,"" Error"":close"^)
  goto size
 )
+echo/
+choice /m "2nd part: select file system [1 = exFAT, 0 = NTFS]:" /c 10 /n
+if %errorlevel%==1 (set fs=exFAT) else set "fs=NTFS "
 cls
 >%tmp%\s (
  echo sel dis %dsk%
@@ -59,7 +62,7 @@ echo   New partitioning:
 echo   -----------------------------------
 echo   FAT32 partition size is %sz% Mb
 echo                  +
-echo   exFAT partition size is remaining
+echo   %fs% partition size is remaining
 echo   -----------------------------------
 call :isOK|| goto run
 
@@ -76,7 +79,7 @@ diskpart /s %tmp%\s
  echo for fs=fat32 quick
  echo ass
  echo cre par prim
- echo for fs=exfat quick
+ echo for fs=%fs% quick
  echo ass
 )
 diskpart /s %tmp%\s
@@ -86,7 +89,7 @@ goto quit
 :isOK
 echo/
 echo/
-choice /m "Is this correct?"
+choice /m "Is this correct"
 if %errorlevel%==2 exit /b 1
 exit /b 0
 
