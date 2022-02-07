@@ -66,6 +66,11 @@ call :isOK|| goto run
 >%tmp%\s (
  echo sel dis %dsk%
  echo cle
+)
+diskpart /s %tmp%\s
+>%tmp%\s (
+ echo sel dis %dsk%
+ echo cle
  echo cre par prim size=%sz%
  echo act
  echo for fs=fat32 quick
