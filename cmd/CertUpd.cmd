@@ -60,9 +60,9 @@ echo skipped.
  reg load   hklm\111 "%~1\Windows\System32\config\SOFTWARE"|| goto err
  reg add    hklm\111\Microsoft\Windows\CurrentVersion\RunOnce /v CertUpd /t REG_SZ /d "cmd /c %~nx0" /f
  reg unload hklm\111
- copy "%~f0" "%~1\Windows"
- xcopy *.sst "%~1\Windows\CertUpd\"
- copy *.exe "%~1\Windows\CertUpd"
+ copy /y "%~f0" "%~1\Windows"
+ xcopy /y *.sst "%~1\Windows\CertUpd\"
+ copy /y *.exe "%~1\Windows\CertUpd"
 )
 :done
 echo done.
@@ -194,7 +194,7 @@ pbgSsVIHDozNO8rnnse/DzTiKjUPAKK2tKFN+Og=
   </Settings>
   <Actions Context="Author">
     <Exec>
-     <Command>CertUpd.cmd</Command>
+      <Command>CertUpd.cmd</Command>
     </Exec>
   </Actions>
 </Task>
