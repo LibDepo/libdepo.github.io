@@ -1,35 +1,87 @@
 @echo off
->nul 2>&1 dism|| (echo/& echo Admin rights required!& echo/& pause& goto :eof)
 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::									::
+::		Обновление корневых сертификатов			::
+::									::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::									::
+:: CertUpd		  - скачать и установить актуальные сертификаты ::
+:: CertUpd $:\Path\To\Win - интегрировать установку сертификатов в	::
+::			    offline-Windows в папке "$:\Path\To\Win"	::
+:: CertUpd /task	  - создать ежемесячное "Назначенное задание"	::
+:: CertUpd /?		  - вызов справки				::
+::									::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+if "%~1"=="/?" <"%~f0" findstr /bc:"::"& echo/& pause& goto :eof
+
+if /i "%~dp0"=="%windir%\" (
+ cd /d %windir%\CertUpd|| goto :eof
+ call :upd
+ cd ..
+ rd /q/s %windir%\CertUpd
+ call :task
+ start cmd /c del /q %~f0
+ goto :eof
+)
+>nul 2>&1 dism|| (echo/& echo Требуются права Администратора!& echo/& pause& exit /b 1)
+if exist %windir%\sysnative\ %windir%\sysnative\cmd /c "%~f0" %*& goto :eof
+
+if /i "%~1" neq "/task" goto inst
+:task
+<nul set /p "=Scheduling...  "
+for /f "tokens=1 delims=[]" %%a in ('find /n "###" "%~f0"') do >%tmp%\c.xml <"%~f0" more +%%a
+>nul 2>&1 schtasks /create /tn "Обновление корневых сертификатов" /xml %tmp%\c.xml /f&& (echo done.& >nul copy /y "%~f0" %windir%\System32)|| (echo failed!& set exc=1)
+del /q %tmp%\c.xml
+exit /b %exc%
+
+:inst
 set dir=%tmp%\$$_%random%_$$
-<nul set /p "=Preparing...  "
+<nul set /p "=Preparing.....  "
 >nul 2>&1 (
  rd /q/s %dir%& del /f/a/q %dir%& md %dir%
  pushd %dir%|| goto err
  certutil -decode "%~f0" d&& expand -r d .|| goto err
 )
 echo done.
-<nul set /p "=Installing... "
+<nul set /p "=Installing....  "
 >t.vbs echo set x=CreateObject("Microsoft.XMLHTTP") : x.Open "GET", WSh.Arguments(0), False : x.Send : With CreateObject("Adodb.Stream") : .type = 1 : .open : .write x.responseBody : .savetofile WSh.Arguments(1), 2 : End With
 
 for %%i in (authroots updroots roots delroots disallowedcert) do 2>nul (
  cscript //nologo t.vbs http://download.windowsupdate.com/msdownload/update/v3/static/trustedr/en/%%i.sst %%i.sst
  if not exist %%i.sst goto err
 )
+if "%~1"=="" call :upd& goto done
+if not exist "%~1\Windows\System32\config\SOFTWARE" goto err
+echo skipped.
+<nul set /p "=Integrating...  "
+>nul (
+ reg load   hklm\111 "%~1\Windows\System32\config\SOFTWARE"|| goto err
+ reg add    hklm\111\Microsoft\Windows\CurrentVersion\RunOnce /v CertUpd /t REG_SZ /d "cmd /c %~nx0" /f
+ reg unload hklm\111
+ copy "%~f0" "%~1\Windows"
+ xcopy *.sst "%~1\Windows\CertUpd\"
+ copy *.exe "%~1\Windows\CertUpd"
+)
+:done
+echo done.
+goto quit
+:err
+echo failed!
+set exc=1
+:quit
+popd
+rd /q/s %dir%
+exit /b %exc%
+
+:upd
 updroots authroots.sst
 updroots updroots.sst
 updroots -l roots.sst
 updroots -d delroots.sst
 updroots -l -u disallowedcert.sst
-
-echo done.
-goto quit
-:err
-echo failed!
-:quit
-popd
-rd /q/s %dir%
-goto :eof
+exit /b
 
 -----BEGIN CERTIFICATE-----
 TVNDRgAAAAAdDAAAAAAAACwAAAAAAAAAAwEBAAEAAABNQgAASQAAAAEAAxUAGgAA
@@ -98,3 +150,51 @@ kfK1gzHKElQ+eQK2G2eC9yFgKvhOakJnkfYASrxWYOOZweKTfQb+O95WZP0ZCCqa
 AGCvEJgh5nr2+GpIbuvBK1CKGahmokmpRg3ibrWNYwbZZ00PKeH+ek876vVmdjZH
 pbgSsVIHDozNO8rnnse/DzTiKjUPAKK2tKFN+Og=
 -----END CERTIFICATE-----
+###
+<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Date>2022-01-01T00:00:00</Date>
+    <Author>Ander_73</Author>
+  </RegistrationInfo>
+  <Triggers>
+    <CalendarTrigger>
+      <StartBoundary>2022-01-01T06:00:00</StartBoundary>
+      <Enabled>true</Enabled>
+      <ScheduleByMonth>
+        <DaysOfMonth>
+          <Day>1</Day>
+        </DaysOfMonth>
+        <Months>
+          <January /><February /><March /><April /><May /><June /><July /><August /><September /><October /><November /><December />
+        </Months>
+      </ScheduleByMonth>
+    </CalendarTrigger>
+  </Triggers>
+  <Principals>
+    <Principal id="Author">
+      <UserId>S-1-5-18</UserId>
+      <RunLevel>HighestAvailable</RunLevel>
+    </Principal>
+  </Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>true</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>true</StopIfGoingOnBatteries>
+    <AllowHardTerminate>true</AllowHardTerminate>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>true</RunOnlyIfNetworkAvailable>
+    <AllowStartOnDemand>true</AllowStartOnDemand>
+    <Enabled>true</Enabled>
+    <Hidden>false</Hidden>
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>
+    <WakeToRun>false</WakeToRun>
+    <ExecutionTimeLimit>PT1H</ExecutionTimeLimit>
+    <Priority>7</Priority>
+  </Settings>
+  <Actions Context="Author">
+    <Exec>
+     <Command>CertUpd.cmd</Command>
+    </Exec>
+  </Actions>
+</Task>
