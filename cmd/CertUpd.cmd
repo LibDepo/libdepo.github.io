@@ -9,12 +9,14 @@
 :: CertUpd		  - скачать и установить актуальные сертификаты ::
 :: CertUpd $:\Path\To\Win - интегрировать установку сертификатов в	::
 ::			    offline-Windows в папке "$:\Path\To\Win"	::
+:: CertUpd /offline	  - создать offline-комплект установки		::
 :: CertUpd /task	  - создать ежемесячное "Назначенное задание"	::
 :: CertUpd /?		  - вызов справки				::
 ::									::
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 if "%~1"=="/?" <"%~f0" findstr /bc:"::"& echo/& pause& goto :eof
+if /i "%~1"=="/offline" goto inst
 
 if /i "%~dp0"=="%windir%\" (
  cd /d %windir%\CertUpd|| goto :eof
@@ -53,6 +55,13 @@ for %%i in (authroots updroots roots delroots disallowedcert) do 2>nul (
  if not exist %%i.sst goto err
 )
 if "%~1"=="" call :upd& goto done
+if /i "%~1" neq "/offline" goto intg
+echo skipped.
+<nul set /p "=Offlining...    "
+2>nul md "%~dp0Offline"& for %%i in (exe sst) do >nul move /y *.%%i "%~dp0Offline"
+prompt $S& echo on& 2>nul >"%~dp0Offline\zrun.cmd" (echo  cd /d "%%~dp0"& call :upd)& echo off
+goto done
+:intg
 if not exist "%~1\Windows\System32\config\SOFTWARE" goto err
 echo skipped.
 <nul set /p "=Integrating...  "
