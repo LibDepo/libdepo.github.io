@@ -6,6 +6,7 @@ echo =================================================
 echo 	Unblocking files from unsafe zone
 echo =================================================
 echo/
+if "%~1"=="" cd /d "%~dp0"
 if /i "%~1" neq "/l" (call :chk %1) else for /f "delims=" %%b in (
 'type "%~2"^| (^>nul (pause ^& pause ^& pause^)^& findstr "^"^)'
 ) do call :chk "%%~b"
