@@ -1,3 +1,6 @@
+13.09.2022
+* Обновлён аддон PMagic
+* Обновлён список Linux distro (upd. Fedora, Ubuntu)
 01.08.2022
 * Обновлён список Linux distro (upd. LinuxMint)
 21.06.2022
