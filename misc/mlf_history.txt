@@ -1,3 +1,5 @@
+17.09.2022
+* Обновлён аддон R-Studio
 13.09.2022
 * Обновлён аддон PMagic
 * Обновлён список Linux distro (upd. Fedora, Ubuntu)
