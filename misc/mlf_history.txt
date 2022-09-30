@@ -1,3 +1,5 @@
+30.09.2022
+* Обновлён аддон Memory Test Floppy Disk (MemTest 10.0 Pro)
 17.09.2022
 * Обновлён аддон R-Studio
 13.09.2022
