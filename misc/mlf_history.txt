@@ -1,3 +1,5 @@
+21.11.2022
+* Обновлён аддон PMagic
 30.09.2022
 * Обновлён аддон Memory Test Floppy Disk (MemTest 10.0 Pro)
 17.09.2022
