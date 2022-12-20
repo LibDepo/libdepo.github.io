@@ -1,3 +1,5 @@
+20.12.2022
+* Обновлён список Linux distro (upd. LinuxMint)
 17.12.2022
 * Обновлён аддон Memory Test Floppy Disk
 21.11.2022
