@@ -6,21 +6,17 @@ if exist %windir%\sysnative\ %windir%\sysnative\cmd /c "%~fs0"& goto :eof
  goto :eof
 )
 if "%1"=="run" (
- title -= Create 2-partition USB-drive =-
+ title  *** Create 2-partition USB-drive ***
  chcp 860
  mode 80,40
  goto run
 )
-2>nul (
- md %systemroot%\Temp
- mklink %systemroot%\Temp\cmd.exe %comspec%
-)
-for %%i in ("reg add HKEY_CURRENT_USER\Console\%%SystemRoot%%_Temp_cmd.exe /f /v") do (
+for %%i in ("reg add HKCU\Console\C2PUD /f /v") do (
  %%~i "FontSize"	/t REG_DWORD	/d 0x0010000c
  %%~i "FontFamily"	/t REG_DWORD	/d 0x00000030
  %%~i "FaceName"	/t REG_SZ	/d "Terminal"
 )
-start %systemroot%\Temp\cmd.exe /c "%~f0" run
+start "C2PUD" cmd /c "%~f0" run
 goto :eof
 
 :run
@@ -78,6 +74,8 @@ diskpart /s %tmp%\s
  echo act
  echo for fs=fat32 quick
  echo ass
+ echo remove
+ echo ass
  echo cre par prim
  echo for fs=%fs% quick
  echo ass
@@ -94,5 +92,5 @@ if %errorlevel%==2 exit /b 1
 exit /b 0
 
 :quit
-reg delete HKEY_CURRENT_USER\Console\%%SystemRoot%%_Temp_cmd.exe /f
-del /q %systemroot%\Temp\cmd.exe %tmp%\s
+reg delete HKCU\Console\C2PUD /f
+del /q %tmp%\s
