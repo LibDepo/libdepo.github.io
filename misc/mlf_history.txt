@@ -1,3 +1,5 @@
+11.10.2023
+* Обновлён аддон Memory Test Floppy Disk
 29.08.2023
 * Обновлён аддон Memory Test Floppy Disk
 23.08.2023
