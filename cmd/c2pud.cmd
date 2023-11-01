@@ -6,7 +6,7 @@ if exist %windir%\sysnative\ %windir%\sysnative\cmd /c "%~fs0"& goto :eof
  goto :eof
 )
 if "%1"=="run" (
- title  *** Create 2-partition USB-drive ***
+ title     *** Create 2-partition USB-drive ***
  chcp 860
  mode 80,40
  goto run
@@ -21,6 +21,8 @@ goto :eof
 
 :run
 cls
+set tmp=%windir%\temp
+2>nul md %tmp%
 >%tmp%\s echo lis dis
 diskpart /s %tmp%\s
 echo/
