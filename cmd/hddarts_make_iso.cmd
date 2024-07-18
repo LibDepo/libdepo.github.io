@@ -8,16 +8,13 @@ cd tmp
 >nul cscript.exe tst.vbs "https://libdepo.github.io/files/MakeISO.cab" "a.cab"
 echo done.
 <nul set /p "=Download HDDaRTs... "
->nul cscript.exe tst.vbs "https://libdepo.github.io/files/HDDaRTs.7z" "h.7z"
+>nul cscript.exe tst.vbs "https://libdepo.github.io/files/HDDaRTs.gz" "dir\HDDaRTs.gz"
 echo done.
 echo/
 expand a.cab -f:* .
 echo/
-7zdec86.exe x h.7z
-echo/
 move MEMDISK dir
 move ISOLINUX.CFG dir
-move Extra\HDDaRTs.gz dir
 oscdimg.exe -lHDDARTS -bisolinux.bin dir ..\HDDaRTs.iso
 echo/
 IsoLinuxFixer.exe ..\HDDaRTs.iso
