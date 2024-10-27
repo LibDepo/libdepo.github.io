@@ -5,3 +5,4 @@ With WScript.CreateObject("WScript.Shell").CreateShortcut("C:\Windows\depo.lnk")
  .IconLocation = "C:\Windows\System32\imageres.dll,226"
  .Save
 End With
+WSh.Echo "ярлык C:\Windows\depo.lnk успешно создан!"
